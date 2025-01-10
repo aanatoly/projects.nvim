@@ -2,9 +2,6 @@ local M = {}
 
 M.filename = vim.fn.stdpath "cache" .. "/" .. "recent-projects.txt"
 
-local t = os.date "%FT%T"
-print(vim.inspect(t))
-
 M.update = function(path, limit)
   local file = io.open(M.filename, "r")
   if not file then

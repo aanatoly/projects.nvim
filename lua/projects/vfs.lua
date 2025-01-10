@@ -122,7 +122,7 @@ M.find = function(options)
       }
     end
   end
-  local budget = 5
+  local budget = options.recent_max
   budget = M.update_opened_projects(results, budget)
   budget = require("projects.recent").load(results, budget)
   results = vim.tbl_values(results)
