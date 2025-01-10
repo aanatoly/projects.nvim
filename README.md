@@ -13,10 +13,11 @@
 
 **Features:**
 
-- Finds all project in defined workspaces
-- Shows opened project first with tab number
-- Show recent projects next, up to (recent_max - opened) entries
-- Default action (`<CR>`) is to create dedicated tab if needed and jump to it
+- Discover projects from predefined workspaces automatically.
+- Prioritize open projects and display associated tab numbers.
+- Prioritize recent projects and display up to `recent_max - opened` entries.
+- Maintain a list of recent projects, up to `recent_max` entries.
+- Default action (`<CR>`) opens a project in a dedicated tab and switches to it.
 
 ## Installation
 
