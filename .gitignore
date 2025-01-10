@@ -1,0 +1,9 @@
+.*.sw*
+/.vagrant/
+node_modules/
+
+# ignore python files
+/.venv/
+__pycache__
+/.mypy_cache/
+/.ruff_cache/
