@@ -77,7 +77,6 @@ M.load = function(results, budget)
   end
 
   local recent = M.get()
-  print("recent", vim.inspect(recent))
   for _, r in ipairs(recent) do
     if update_results(r) then
       budget = budget - 1

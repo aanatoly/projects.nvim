@@ -83,7 +83,7 @@ M.cd_project = function(options, entry)
   local path = project.ws_abspath .. "/" .. project.proj_relpath
   path = vim.fn.fnamemodify(path, ":p")
   path = path:gsub("/+$", "")
-  print("new cwd:", path)
+  vim.notify("switched to project: " .. path)
   local tabs = vim.api.nvim_list_tabpages()
   for _, tab in ipairs(tabs) do
     local tabnr = vim.api.nvim_tabpage_get_number(tab)
@@ -96,7 +96,9 @@ M.cd_project = function(options, entry)
 
   require("projects.recent").update(path, options.recent_max)
   vim.fn.execute("tabnew | tcd " .. path, "silent")
-  vim.fn.execute("NvimTreeFocus", "silent")
+  if options.on_tab_create then
+    options.on_tab_create()
+  end
 end
 
 M.projects_list = function(options)

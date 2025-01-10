@@ -35,6 +35,9 @@ return {
       dev = "~/dev",
       work = "~/work",
     },
+    on_tab_create = function()
+      vim.fn.execute("NvimTreeToggle", "silent")
+    end,
   },
 }
 ```
@@ -53,6 +56,9 @@ opts = {
   workspaces = {},
   -- max depth to search for project within workspaces
   maxdepth = 4,
+  -- hook that executes after creating new tab, useful to update other plugins
+  -- like tree viewers or status line
+  on_tab_create = nil,
 }
 ```
 
