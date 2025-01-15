@@ -68,10 +68,10 @@ You can bind it to a key
 
 ```lua
 
-vim.keymap.set("n", "<leader>pp", ":ProjectList<CR>", { desc = "List Projects" })
+vim.keymap.set("n", "<leader>pp", ":ProjectsList<CR>", { desc = "List Projects" })
 ```
 
-or run from command line `:ProjectList`
+or run from command line `:ProjectsList`
 
 ## Credits
 

@@ -126,7 +126,7 @@ end
 
 M.setup = function(options)
   options = vim.tbl_deep_extend("force", M.options, options or {})
-  vim.api.nvim_create_user_command("ProjectList", function()
+  vim.api.nvim_create_user_command("ProjectsList", function()
     M.projects_list(options)
   end, {
     desc = "Show Project List",
