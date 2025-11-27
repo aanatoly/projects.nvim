@@ -1,6 +1,6 @@
 local M = {}
 
-M.enabled = true
+M.enabled = false
 
 M.log = function(...)
   if M.enabled then

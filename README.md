@@ -8,10 +8,9 @@
 
 **Features:**
 
-- Discover projects from predefined workspaces automatically.
+- Discover projects (git repos) from predefined workspaces.
 - Prioritize open projects and display associated tab numbers.
-- Prioritize recent projects and display up to `recent_max - opened` entries.
-- Maintain a list of recent projects, up to `recent_max` entries.
+- Prioritize recent projects and display up to `max_recent` entries.
 - Default action (`<CR>`) opens a project in a dedicated tab and switches to it.
 
 ## Installation
@@ -46,11 +45,11 @@ opts = {
   -- symbol to mark recent projects
   recent_sign = "r",
   -- max number of recent entries
-  recent_max = 5,
+  max_recent = 5,
   -- workpsaces table with (name = "path") pairs
   workspaces = {},
   -- max depth to search for project within workspaces
-  maxdepth = 4,
+  max_depth = 4,
   -- hook that executes after creating new tab, useful to update other plugins
   -- like tree viewers or status line
   on_tab_create = nil,

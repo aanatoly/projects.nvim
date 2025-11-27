@@ -9,17 +9,17 @@ local get_repos = require("projects.vfs").get_repos
 
 local M = {}
 
-M.options = {
-  maxdepth = 4,
+local default_opts = {
+  max_depth = 4,
   workspaces = {},
   recent_sign = "r",
-  recent_max = 5,
+  max_recent = 5,
 }
 
-local function project_finder(options)
-  local results = get_repos(options.workspaces, options.maxdepth, options.recent_max)
+local function project_finder(opts)
+  local results = get_repos(opts.workspaces, opts.max_depth, opts.max_recent)
   local ws_name_len = 0
-  for k, _ in pairs(options.workspaces) do
+  for k, _ in pairs(opts.workspaces) do
     if ws_name_len < #k then
       ws_name_len = #k
     end
@@ -44,7 +44,7 @@ local function project_finder(options)
   local displayer = entry_display.create(create_opts)
   local make_display = function(entry)
     local project = entry.value
-    local sign = project.tabnr or (project.recency and options.recent_sign) or ""
+    local sign = project.tabnr or (project.recency and opts.recent_sign) or ""
     local display_opts = {
       { project.ws_name, "TelescopeResultsIdentifier" },
       { project.proj_rel_path },
@@ -79,21 +79,21 @@ local function cd_project(options, entry)
   end
 end
 
-local function projects_list(options)
-  local opts = {}
+local function projects_list(opts)
+  local picker_opts = {}
   pickers
-    .new(opts, {
+    .new(picker_opts, {
       prompt_title = "Select a project",
       results_title = "Projects",
       previewer = false,
-      finder = project_finder(options),
-      sorter = conf.file_sorter(opts),
+      finder = project_finder(opts),
+      sorter = conf.file_sorter(picker_opts),
       ---@diagnostic disable-next-line: unused-local
       attach_mappings = function(prompt_bufnr, map)
         local handler = function()
           local e = actions_state.get_selected_entry(prompt_bufnr)
           actions.close(prompt_bufnr)
-          cd_project(options, e)
+          cd_project(opts, e)
         end
         actions.select_default:replace(handler)
         return true
@@ -102,10 +102,10 @@ local function projects_list(options)
     :find()
 end
 
-M.setup = function(options)
-  options = vim.tbl_deep_extend("force", M.options, options or {})
+M.setup = function(user_opts)
+  local opts = vim.tbl_extend("force", default_opts, user_opts or {})
   vim.api.nvim_create_user_command("ProjectsList", function()
-    projects_list(options)
+    projects_list(opts)
   end, {
     desc = "Show Project List",
   })
