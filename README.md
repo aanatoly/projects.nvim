@@ -1,15 +1,10 @@
-# `telescope-projects.nvim`
-
-[![Version](https://img.shields.io/github/tag/aanatoly/telescope-projects.nvim.png)](https://github.com/aanatoly/telescope-projects.nvim/releases)
-[![Licence](https://img.shields.io/github/license/aanatoly/telescope-projects.nvim.png)](./LICENSE)
-[![Neovim](https://img.shields.io/badge/NeoVim-0.10-blue.png?logo=neovim)][neovim]
-![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen.png)
+# `projects.nvim`
 
 [Neovim][neovim] Telescope plugin to switch between projects.
 
-![img1](docs/ts-ext-projects-01.png)
+![img1](assets/ts-ext-projects-01.png)
 
-![img2](docs/ts-ext-projects-02.png)
+![img2](assets/ts-ext-projects-02.png)
 
 **Features:**
 
@@ -25,7 +20,7 @@ Installation with `lazy`
 
 ```lua
 return {
-  "aanatoly/telescope-projects.nvim",
+  "aanatoly/projects.nvim",
   cmd = { "ProjectList" },
   depends = { "nvim-telescope/telescope.nvim" },
   opts = {
