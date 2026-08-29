@@ -67,12 +67,6 @@ vim.keymap.set("n", "<leader>pp", ":ProjectsList<CR>", { desc = "List Projects" 
 
 or run from command line `:ProjectsList`
 
-## Credits
-
-Big thanks to these awesome projects for ideas and inspiration:
-
-- [telescope-project][telescope-project] - An extension for telescope.nvim that allows you to switch between projects by [Telescope Team][telescope-team]
-
 [neovim]: https://neovim.io/
 [telescope-project]: https://github.com/nvim-telescope/telescope-project.nvim
 [telescope-team]: https://github.com/nvim-telescope
